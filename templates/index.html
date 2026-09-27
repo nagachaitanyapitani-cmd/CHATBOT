@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ bot_name }} - AI Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-wrapper">
+        <!-- Chat Header -->
+        <header class="chat-header">
+            <div class="bot-info">
+                <div class="bot-avatar">
+                    <span>🤖</span>
+                    <span class="online-indicator"></span>
+                </div>
+                <div>
+                    <h1 class="bot-name">{{ bot_name }}</h1>
+                    <p class="bot-status">Always ready to chat</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="clearChatBtn" class="icon-btn" title="Clear conversation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Chat Messages Container -->
+        <main class="chat-body" id="chatBody">
+            <div class="message-group bot">
+                <div class="avatar bot-avatar-small">🤖</div>
+                <div class="message-content">
+                    <div class="bubble bot-bubble">
+                        Hello! 👋 I'm <strong>{{ bot_name }}</strong>, your chatbot assistant. How can I help you today?
+                    </div>
+                    <span class="timestamp" id="initialTime">Just now</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Quick Suggestion Chips -->
+        <div class="suggestions-wrapper">
+            <div class="suggestions" id="suggestionsContainer">
+                <button class="chip" data-msg="What can you do?">✨ What can you do?</button>
+                <button class="chip" data-msg="What time is it?">⏰ Current Time</button>
+                <button class="chip" data-msg="Calculate 125 * 8 + 50">🧮 Math: 125 * 8 + 50</button>
+                <button class="chip" data-msg="Tell me a joke">😄 Tell a joke</button>
+                <button class="chip" data-msg="Tell me a cool fact">💡 Tech fact</button>
+                <button class="chip" data-msg="Help">❓ Help</button>
+            </div>
+        </div>
+
+        <!-- Typing Indicator (hidden by default) -->
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="avatar bot-avatar-small">🤖</div>
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Chat Input Form -->
+        <footer class="chat-footer">
+            <form id="chatForm" autocomplete="off">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Type your message here..." 
+                    autocomplete="off"
+                    required
+                />
+                <button type="submit" id="sendBtn" title="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
